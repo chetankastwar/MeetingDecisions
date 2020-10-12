@@ -1,0 +1,13 @@
+<div class="card" *ngIf="isLoaded">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="detailForm">
+            <div *ngFor="let fieldInfo of productDefinition; let id = index">
+                <app-field [fieldInfo]="fieldInfo" [form]="detailForm" [id]="id" ></app-field>
+            </div>
+            <div class="form-row">
+                <button type="submit" [disabled]="!detailForm.valid" class="btn btn-primary">Create</button>
+                <button *ngIf="IsSaved" type="button" (ngClick)="onReset()" class="btn">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
